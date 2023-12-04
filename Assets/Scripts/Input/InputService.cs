@@ -57,7 +57,7 @@ namespace Command.Input
 
             UnitCommand commandToProcess = CreateUnitCommand(targetUnit);
 
-            GameService.Instance.ProcessUnitCommand(CommandToProcess);
+            //GameService.Instance.ProcessUnitCommand(CommandToProcess);
         }
 
         private UnitCommand CreateUnitCommand(UnitController targetUnit)

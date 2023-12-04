@@ -55,10 +55,7 @@ namespace Command.Main
             CommandInvoker = new CommandInvoker();
         }
 
-        internal void ProcessUnitCommand(object commandToProcess)
-        {
-            throw new NotImplementedException();
-        }
+        public void ProcessUnitCommand(ICommand commandToProcess) => PlayerService.ProcessUnitCommand(commandToProcess as UnitCommand);
 
         private void Update() => InputService.UpdateInputService();
     }

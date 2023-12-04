@@ -4,6 +4,7 @@ using Command.Actions;
 using System.Collections;
 using System;
 using Object = UnityEngine.Object;
+using Command.Commands;
 
 namespace Command.Player
 {
@@ -84,6 +85,8 @@ namespace Command.Player
             CurrentHealth = CurrentHealth + healthToRestore > CurrentMaxHealth ? CurrentMaxHealth : CurrentHealth + healthToRestore;
             unitView.UpdateHealthBar((float)CurrentHealth / CurrentMaxHealth);
         }
+
+        public void ProcessUnitCommand(UnitCommand commandToProcess) => GameService.Instance.CommandInvoker.ProcessCommand(commandToProcess);
 
         private void UnitDied()
         {
