@@ -10,6 +10,7 @@ using Command.Battle;
 using Command.Actions;
 using UnityEngine.UI;
 using Command.Commands;
+using System;
 
 namespace Command.Main
 {
@@ -52,6 +53,11 @@ namespace Command.Main
             PlayerService = new PlayerService();
             uiService.Init(battleScriptableObjects.Count);
             CommandInvoker = new CommandInvoker();
+        }
+
+        internal void ProcessUnitCommand(object commandToProcess)
+        {
+            throw new NotImplementedException();
         }
 
         private void Update() => InputService.UpdateInputService();
