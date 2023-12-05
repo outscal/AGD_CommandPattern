@@ -86,7 +86,7 @@ namespace Command.Player
 
         internal void ProcessUnitCommand(UnitCommand commandToProcess)
         {
-            throw new NotImplementedException();
+            GetUnitByID(commandToProcess.commandData.ActorUnitID).ProcessUnitCommand(commandToProcess);
         }
 
         // TODO:    What is this??
