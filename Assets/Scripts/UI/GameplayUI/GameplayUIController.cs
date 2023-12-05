@@ -1,5 +1,6 @@
 using Command.Input;
 using Command.Main;
+using System;
 using UnityEngine;
 
 namespace Command.UI
@@ -44,6 +45,10 @@ namespace Command.UI
                     break;
             }
         }
+
+        internal void OnUndoButtonClick() => GameService.Instance.CommandInvoker.Undo();
+        
+        
 
         public void ResetBattleBackgroundOverlay() => gameplayView.ResetBackgroundOverlay();
 

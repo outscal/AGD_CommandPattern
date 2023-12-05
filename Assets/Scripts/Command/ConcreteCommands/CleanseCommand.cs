@@ -6,6 +6,7 @@ namespace Command.Commands
     public class CleanseCommand : UnitCommand
     {
         private bool willHitTarget;
+        private int previousPower;
         private const float hitChance = 0.2f;
 
         public CleanseCommand(CommandData commandData)
