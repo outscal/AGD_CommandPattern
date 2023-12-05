@@ -1,4 +1,5 @@
 using Command.Commands;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,26 @@ namespace Command.Player
             this.playerService = playerService;
             PlayerID = playerScriptableObject.PlayerID;
             CreateUnits(playerScriptableObject.UnitData, playerScriptableObject.UnitPositions);
+        }
+
+        internal void ResetCurrentActiveUnit()
+        {
+            units[activeUnitIndex].ResetUnitIndicator();
+
+            activeUnitIndex--;
+
+            while(activeUnitIndex >= 0)
+            {
+                if(!units[activeUnitIndex].IsAlive())
+                {
+                    activeUnitIndex--;
+                }
+                else
+                {
+                    units[activeUnitIndex].StartUnitTurn();
+                    break;
+                }
+            }
         }
 
         private void CreateUnits(List<UnitScriptableObject> unitScriptableObjects, List<Vector3> unitPositions)

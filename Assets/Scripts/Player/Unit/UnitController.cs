@@ -144,6 +144,11 @@ namespace Command.Player
             Owner.OnUnitTurnEnded();
             unitView.SetUnitIndicator(false);
         }
+        public void Revives()
+        {
+            SetAliveState(UnitAliveState.ALIVE);
+            unitView.PlayAnimation(UnitAnimations.IDLE);
+        }
 
         public void ResetStats() => CurrentPower = unitScriptableObject.Power;
 
