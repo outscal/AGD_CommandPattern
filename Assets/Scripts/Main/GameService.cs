@@ -10,6 +10,7 @@ using Command.Battle;
 using Command.Actions;
 using UnityEngine.UI;
 using Command.Commands;
+using System;
 
 namespace Command.Main
 {
@@ -31,8 +32,15 @@ namespace Command.Main
         public PlayerService PlayerService { get; private set; }
         public CommandInvoker CommandInvoker { get; private set; }
 
+        public ReplayService ReplayService { get; private set; }
+
         [SerializeField] private UIService uiService;
         public UIService UIService => uiService;
+
+        internal void ProcessUnitCommand(System.Windows.Input.ICommand command)
+        {
+            throw new NotImplementedException();
+        }
 
         // Scriptable Objects:
         [SerializeField] private SoundScriptableObject soundScriptableObject;
@@ -52,10 +60,11 @@ namespace Command.Main
             PlayerService = new PlayerService();
             uiService.Init(battleScriptableObjects.Count);
             CommandInvoker = new CommandInvoker();
+            ReplayService = new ReplayService();
         }
 
         private void Update() => InputService.UpdateInputService();
 
         public void ProcessUnitCommand(ICommand commandToProcess) => PlayerService.ProcessUnitCommand(commandToProcess as UnitCommand);
     }
-}
+} 
