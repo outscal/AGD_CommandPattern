@@ -1,3 +1,4 @@
+using Command.Commands;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,12 +83,24 @@ namespace Command.Player
             units.Clear();
         }
 
-        // TODO:    What is this??
-        public void ResetCurrentActivePlayer()
+        public void ProcessUnitCommand(UnitCommand commandToProcess) => GetUnitByID(commandToProcess.commandData.ActorUnitID).ProcessUnitCommand(commandToProcess);
+
+        public void ResetCurrentActiveUnit()
         {
             units[activeUnitIndex].ResetUnitIndicator();
+            
             activeUnitIndex--;
-            units[activeUnitIndex].StartUnitTurn();
+            
+            while(activeUnitIndex >= 0)
+            {
+                if (!units[activeUnitIndex].IsAlive())
+                    activeUnitIndex--;
+                else
+                {
+                    units[activeUnitIndex].StartUnitTurn();
+                    break;
+                }
+            }
         }
     }
 }
