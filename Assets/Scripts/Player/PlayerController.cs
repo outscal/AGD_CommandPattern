@@ -1,3 +1,5 @@
+using Command.Commands;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,6 +82,11 @@ namespace Command.Player
         {
             units.ForEach(unit => unit.Destroy());
             units.Clear();
+        }
+
+        internal void ProcessUnitCommand(UnitCommand commandToProcess)
+        {
+            GetUnitByID(commandToProcess.commandData.ActorUnitID).ProcessUnitCommand(commandToProcess);
         }
 
         // TODO:    What is this??
