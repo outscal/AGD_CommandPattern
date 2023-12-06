@@ -11,6 +11,7 @@ using Command.Actions;
 using UnityEngine.UI;
 using Command.Commands;
 using System;
+using Command.Replay;
 
 namespace Command.Main
 {

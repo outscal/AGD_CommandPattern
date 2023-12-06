@@ -1,4 +1,5 @@
 using Command.Main;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -29,6 +30,11 @@ namespace Command.Replay
         {
             if (replayCommandStack.Count > 0)
                 GameService.Instance.ProcessUnitCommand(replayCommandStack.Pop());
+        }
+
+        internal void SetCommandStack(Stack<Commands.ICommand> commandRegistry)
+        {
+            throw new NotImplementedException();
         }
     }
 
